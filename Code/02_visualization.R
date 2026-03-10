@@ -114,12 +114,40 @@ sentinel=c(b2,b3,b4,b8)
 #layer 3 = b4
 #layer 4 = b8
 
+im.multiframe(1,2)
 #2. im.plotRGB #RGB in maiuscolo
 #im.plotRGB(nome, componente R, componente G, componente B)
-im.plotRGB(sentinel, r=3, g=2, b=1)
+im.plotRGB(sentinel, r=3, g=2, b=1) #questa visualizzazione si chiama natural colors
 #abbiamo usato solo bande di colore del visibile, 
 #otteniamo esattamente i colori naturali 
 #con cui vedremmo l'immagine da una altezza di 800m
 
 #vogliamo aggiungere la banda infrarosso, quindi dobbiamo toglierne una
 #perché si possono mettere massimo 3 bande
+
+im.plotRGB(sentinel, r=4, g=3, b=2) #questa visualizzazione si chiama false colors
+#quindi tutta la banda riflessa dell'infrarosso verrà rappresentata come componente R e quindi rossa
+
+plot(sentinel[[4]])
+im.plotRGB(sentinel, r=4, g=3, b=2)
+#confronto tra solo banda dell'infrarosso e immagine con le diverse bande
+#vediamo che le parti dell'immagine che riflettono più infrarosso 
+#nella seconda immagine sono quelle più rosse
+
+#associamo la banda dell'infrarosso a una nuova componente
+#si usa molto l'infrarosso sulla componente G
+im.plotRGB(sentinel, r=3, g=4, b=2) #false colors
+
+im.plotRGB(sentinel, r=3, g=2, b=4)
+
+#le bande del visibile sono molto correlate tra loro quindi anche se le scambio fa niente
+
+#tutte le immagini in un singolo multiframe
+im.multiframe(2,2)
+im.plotRGB(sentinel, r=3, g=2, b=1)
+im.plotRGB(sentinel, r=4, g=3, b=2)
+im.plotRGB(sentinel, r=3, g=4, b=2)
+im.plotRGB(sentinel, r=3, g=2, b=4)
+
+pairs(sentinel) #per vedere correlazione tra gli elementi di sentinel
+                #quindi correlazione tra le bande
