@@ -144,10 +144,11 @@ im.plotRGB(sentinel, r=3, g=2, b=4)
 
 #tutte le immagini in un singolo multiframe
 im.multiframe(2,2)
-im.plotRGB(sentinel, r=3, g=2, b=1)
+im.plotRGB(sentinel, r=3, g=2, b=1) #si possono scrivere anche senza r=... ma solo col numero
 im.plotRGB(sentinel, r=4, g=3, b=2)
 im.plotRGB(sentinel, r=3, g=4, b=2)
 im.plotRGB(sentinel, r=3, g=2, b=4)
 
 pairs(sentinel) #per vedere correlazione tra gli elementi di sentinel
                 #quindi correlazione tra le bande
+
