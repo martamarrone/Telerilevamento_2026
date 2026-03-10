@@ -152,3 +152,15 @@ im.plotRGB(sentinel, r=3, g=2, b=4)
 pairs(sentinel) #per vedere correlazione tra gli elementi di sentinel
                 #quindi correlazione tra le bande
 
+#stessa cosa ma usando il pacchetto terra
+#plotRGB()
+plotRGB(sentinel, 3, 2, 1)
+#dà errore perché l'immagine ha un numero ristretto di valori rispetto a quelli da riempire per fare l'immagine 
+plotRGB(sentinel, 3, 2, 1, stretch="lin")
+#stretch="lin" usa una trasformazione lineare per ampliare i miei dati e "spalmarli" su tutti i valori disponili
+plotRGB(sentinel, 3, 2, 1, stretch="hist")
+#gli estremi rimangono uguali ma i valori medi vengono amplificati
+#lo stretch per istogrammi aumenta il contrasto dei valori medi
+#in questo modo però si perde la correlazione spiegabile tra il colore e la banda
+#non posso dire cosa rappresentano quei colori
+#quindi questo stretch si usa solo per aumentare la discriminazione dei valori medi (a danno del colore originale)
