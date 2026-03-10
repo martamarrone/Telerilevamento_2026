@@ -120,3 +120,6 @@ im.plotRGB(sentinel, r=3, g=2, b=1)
 #abbiamo usato solo bande di colore del visibile, 
 #otteniamo esattamente i colori naturali 
 #con cui vedremmo l'immagine da una altezza di 800m
+
+#vogliamo aggiungere la banda infrarosso, quindi dobbiamo toglierne una
+#perché si possono mettere massimo 3 bande
