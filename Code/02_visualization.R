@@ -4,10 +4,13 @@ install.packages("viridis")
 install.packages("devtools")
 library(devtools)
 install_github("ducciorocchini/imageRy")
+install.packages("patchwork")
 
 library(terra)
 library(imageRy)
 library(viridis)
+library(ggplot2)
+library(patchwork)
 
 im.list()
 # Sentinel bands:
@@ -83,4 +86,37 @@ plot(sentinel[[1]])
 #mi fa vedere solo il layer 1, quindi b2
 #non gli piace il dollaro, usiamo [[layer]]
 
+#usiamo ggplot2
+#stack
+im.list()
+b2=im.import(sentinel.dolomites.b2.tif)                         
+b3=im.import(sentinel.dolomites.b3.tif)                         
+b4=im.import(sentinel.dolomites.b4.tif)
+b8=im.import(sentinel.dolomites.b8.tif)
 
+#install.packages("patchwork")
+p1=im.ggplot(b8)
+p2=im.ggplot(b4)
+p1+p2
+
+#creare un multiframe
+#1. par(mfrow=c(1,2))
+#2. im.multiframe(1,2)
+#3. stack
+#4. ggplot2 patchwork
+
+#RGB plot
+#1. creare lo stack
+sentinel=c(b2,b3,b4,b8)
+
+#layer 1 = b2
+#layer 2 = b3
+#layer 3 = b4
+#layer 4 = b8
+
+#2. im.plotRGB #RGB in maiuscolo
+#im.plotRGB(nome, componente R, componente G, componente B)
+im.plotRGB(sentinel, r=3, g=2, b=1)
+#abbiamo usato solo bande di colore del visibile, 
+#otteniamo esattamente i colori naturali 
+#con cui vedremmo l'immagine da una altezza di 800m
