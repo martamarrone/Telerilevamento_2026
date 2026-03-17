@@ -93,9 +93,16 @@ plot(ndvi2006, col=inferno(100))
 dvi1992=im.dvi(mato1992,1,2)
 dvi2006=im.dvi(mato2006,1,2)
 plot(dvi1992, col=inferno(100))
-plot(ddvi2006, col=inferno(100))
+plot(dvi2006, col=inferno(100))
 
 ndvi1992=im.ndvi(mato1992,1,2)
 ndvi2006=im.ndvi(mato2006,1,2)
 plot(ndvi1992, col=mako(100)) #possiamo anche cambiare colore
-plot(nddvi2006, col=mako(100))
+plot(ndvi2006, col=mako(100))
+
+
+par(mfrow=c(2,2))
+plot(ndvi1992, col=magma(100))
+plot(ndvi2006, col=magma(100))
+plot(ndvi1992, col=magma(100)) 
+plot(ndvi2006, col=magma(100))
