@@ -1,0 +1,49 @@
+library(terra)
+library(imageRy)
+
+im.list()
+
+EN_01=im.import("EN_01.png")
+EN_01=flip(EN_01)
+
+plot(EN_01)
+EN_01
+#8 bit, 256 valori 
+
+EN_13=im.import("EN_13.png")
+EN_13=flip(EN_13)
+
+plot(EN_13)
+EN_13
+
+#Differenza
+ENdif = EN_01[[1]] - EN_13[[]]
+#valori di azoto del primo momento - quelli del secondo
+#differenza alta = valori più alti prima (giallo)
+#differenza bassa = valori più alti dopo (blu)
+dev.off()
+plot(ENdif)
+
+#stack immagini dalla groenlandia
+gl_00=im.import("greenland.2000.tif")                                
+gl_05=im.import("greenland.2005.tif")                                
+gl_10=im.import("greenland.2010.tif")                                
+gl_15=im.import("greenland.2015.tif")
+
+stack_gl= c(gl_00,gl_05,gl_10,gl_15)
+
+#oppure lo stack si può fare così:
+gr = im.import("greenland")
+
+im.multiframe(1,2)
+plot(gr[[1]])
+plot(gr[[4]])
+
+dif = gr[[4]] - gr[[1]]
+dev.off()
+plot(dif)
+
+#RGB
+RGB = im.plotRGB(gr, 1, 2, 4)
+#tutte le zone che hanno temperature più alte nel 2000 vengono rosse, 
+#quelle con temperature più alte nel 2005 vengono verdi, quelle con temperature più alte nel 2015 verrano blu)
