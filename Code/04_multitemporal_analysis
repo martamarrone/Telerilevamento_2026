@@ -47,3 +47,35 @@ plot(dif)
 RGB = im.plotRGB(gr, 1, 2, 4)
 #tutte le zone che hanno temperature più alte nel 2000 vengono rosse, 
 #quelle con temperature più alte nel 2005 vengono verdi, quelle con temperature più alte nel 2015 verrano blu)
+
+im.list()
+ndvi= im.import("Sentinel2_NDVI")
+hist(ndvi)
+
+#kernel density: distribuzione di frequenza non per istogrammi ma per linee continue --> come se portassimo un istogrmma, attraverso un integrale, 
+#ad avere barre sempre più strette, quindi ad essere una linea continua
+
+#intall.packages("ggrigis")
+
+im.ridgeline(ndvi, scale=1, "palette=viridis")
+#ndvi: nome dell'immagine, scala: massima altezza
+#r non ci da diversi plot ma solo uno 
+
+ndvi
+#ci sono 4 sources quindi ma mi dà solo un'immagine perché le variabili si chiamano tutte NDVI, quindi le sovrascrive ogni volta
+
+names(ndvi) = c("02feb", "05may","08aug", "11nov")
+im.ridgeline(ndvi, scale=2, "palette=viridis")
+#scale=1 vuol dire che ogni grafico arriva a massimo la fine del suo rettangolo, scale=2 è carino perch<è gli dà tridimensionalità
+#rende il grafico più bello ma non serve a nulla (oltre 2 no)
+
+plot(ndvi[[1]],ndvi[[2]])
+#y = x 
+#y = a + bx
+#a = 0, b=1
+abline(0, 1, col="red")
+#la linea non è precisamente a 45 gradi perché i range dell'asse x e asse y non sono uguali
+#devo renderli uguali
+plot(ndvi[[1]],ndvi[[2]]), xlim=c(-0.3,0.9), ylim=c(-0.3,0-9))
+abline(0, 1, col="red")
+
