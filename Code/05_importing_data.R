@@ -1,8 +1,10 @@
 #code to import data
 
+install.packages("ggridges")
 library(terra)
 library(viridis)
 library(imageRy)
+library(ggridges)
 
 setwd("C:\\Users\\Marta\\Desktop\\Uni 2\\Telerilevamento geo-ecologico\\drone")
 getwd()
@@ -43,3 +45,61 @@ plotRGB(stack, r=3, g=2, b=1, stretch="hist")
 #aumenta molto la discriminanza dei valori intermedi ma praticamente elimina quelli estremi
 
 im.multiframe(1,2)
+plotRGB(stack, r=3, g=2, b=1, stretch="lin")
+plotRGB(stack, r=3, g=2, b=1, stretch="hist")
+
+#NDVI
+?im.ndvi
+ndvi=im.ndvi(stack, 3, 2)
+dev.off()
+
+#esportazione dati
+#funzione di terra
+writeRaster(ndvi, "ndvi.tif")
+#la esporta nella cartella selezionata come direttoria
+
+#importare: rast, esportare: writeRaster
+#selezionando direttoria
+#salvando questo dato me lo salva in bianco e nero
+#per salvarlo a colori salvo un'immagine e non il dato
+im.multiframe(2,2)
+plot(green)
+plot(red)
+plot(NIR)
+plot(ndvi)
+
+#file png
+#file immagine con risoluzione predefinita non molto alta
+png("figura1.png")
+im.multiframe(2,2)
+plot(green)
+plot(red)
+plot(NIR)
+plot(ndvi)
+dev.off()
+#con png apro l'immagine, ci metto tutto quello che voglio dentro 
+#poi dev.off() chiude l'immagine
+#--> mi salva l'immagine nella cartella
+
+#file pdf
+#file vettoriale, risoluzione perfetta anche se si ingrandisce
+pdf("figura1.pdf")
+im.multiframe(2,2)
+plot(green)
+plot(red)
+plot(NIR)
+plot(ndvi)
+dev.off()
+
+#pacchetto patchwork prende pacchetti di ggplot e li unisce
+plot1=im.ggplot(ndvi)
+plot2=im.ridgeline(ndvi,scale=1)
+plot1+plot2
+
+#se li esporto con png e pdf non vengono in scala o non vengono proprio, quindi meglio fare lo screenshot
+# https://github.com/ducciorocchini/Telerilevamento_2026/tree/main/Drone2
+#diventa:
+gregt= rast("https://raw.githubusercontent/ducciorocchini/Telerilevamento_2026/main/Drone2/DJI_20260409152942_0001_MS_G.TIF")
+#cambiare da githuba raw...
+#togliere tree perché tree serve solo per la visualizzazione
+#aggiungere il nome del file
