@@ -99,7 +99,9 @@ plot1+plot2
 #se li esporto con png e pdf non vengono in scala o non vengono proprio, quindi meglio fare lo screenshot
 # https://github.com/ducciorocchini/Telerilevamento_2026/tree/main/Drone2
 #diventa:
-gregt= rast("https://raw.githubusercontent/ducciorocchini/Telerilevamento_2026/main/Drone2/DJI_20260409152942_0001_MS_G.TIF")
+gregt= rast("https://raw.githubusercontent.com/ducciorocchini/Telerilevamento_2026/main/Drone2/DJI_20260409152942_0001_MS_G.TIF")
 #cambiare da githuba raw...
 #togliere tree perché tree serve solo per la visualizzazione
 #aggiungere il nome del file
+gregt=flip(gregt)
+plot(gregt)
