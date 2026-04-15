@@ -1,5 +1,6 @@
-# Ice spread: titolo della presentazione
+# Ice spread: titolo della presentazione 🧊
 cancelletto e spazio per fare il titolo: più cancelletti per titoli minori
+per emoji due punti e nome dell'emoji
 
 <img width="1800" height="1201" alt="Melecio-Zambrano_LMZ_low_sun_ice_melt" src="https://github.com/user-attachments/assets/3db1956b-d964-478f-9c25-dc12a8636234" />
 
