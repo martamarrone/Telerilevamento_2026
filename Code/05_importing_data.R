@@ -105,3 +105,12 @@ gregt= rast("https://raw.githubusercontent.com/ducciorocchini/Telerilevamento_20
 #aggiungere il nome del file
 gregt=flip(gregt)
 plot(gregt)
+
+#importing earth data
+setwd("C:\\Users\\Marta\\Desktop\\Uni 2\\Telerilevamento geo-ecologico")
+list.files()
+
+sat = rast( "ISS074-E-417243.jpg" )
+plot(sat)
+sat=flip(sat)
+
