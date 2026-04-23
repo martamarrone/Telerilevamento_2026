@@ -2,6 +2,8 @@
 
 library(terra)
 library(imageRy)
+library(ggplot2)
+library(patchwork)
 
 im.list()
 sun=im.import( "Solar_Orbiter_s_first_views_of_the_Sun_pillars.jpg")
@@ -53,3 +55,22 @@ tab = data.frame(
   perc1992 = c(83, 17),
   perc2006 = c(55, 45)
 )
+
+p1 = ggplot(tab, aes(x=class, y=perc1992, color = class)) +   #struttura
+  geom_bar(stat="identity", fill = "white") + #definisce la geometria mentre fill dice il colore
+  ylim(c(0,100)) + 
+  #theme(legend.position = "none") #per rimuovere la legenda se i colori sono gli stessi e quindi due legende non servono
+  #theme_minimal() se voglio rimuovere lo sfondo grigio, ma a lui non piace
+  #theme_dark "bruttissimo"
+#la funzione aesthetic ha x, y e colore
+#mettiamo color = class così mette un colore per forest e uno per human
+
+p2 = ggplot(tab, aes(x=class, y=perc2006, color = class)) +   
+  geom_bar(stat="identity", fill = "brown") +
+  ylim(c(0,100))
+
+p1 + p2 
+#posso farlo grazie al pacchetto patchwork
+
+#le scale delle y sono diverse
+#--> yllim
