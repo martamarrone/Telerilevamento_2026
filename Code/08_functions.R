@@ -1,3 +1,6 @@
+library(imageRy)
+library(terra)
+
 # my functions
 
 somma = function(x,y) {
