@@ -13,6 +13,10 @@ differenza = function(x,y) {
   return(z)
 }
 
+sink("data.txt")
+loop3()
+sink()
+#il sink chiude la funzione, come png
 #install.packages("qrcode")
 url = "link"
 qr = qr_code(url)
