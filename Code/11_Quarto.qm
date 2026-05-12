@@ -1,0 +1,54 @@
+---
+title: "11_Quarto"
+format: revealjs
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+## Bullets
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+## Code
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+## Come installare e caricare \`imageRy\`
+Per intallare imageRy
+
+``` {r echo=T, eval=F}
+devtools:: install_github("ducciorocchini/imageRy")
+library(imageRy)
+```
+echo=true vuol dire che fa vedere le funzioni che uso
+eval=F fa vedere la funzione senza farla partire
+
+## Lista files
+Lista di file in `imageRy`:
+
+```{r echo=TRUE}
+im.list()
+```
+
+## Importare un'immagine
+```{r echo=TRUE}
+library(terra)
+blett=im.import("bletterbach.jpg")
+```
+
+# Analisi dati
+## Indici
+
+```{r echo=TRUE}
+index = blett[[1]] - blett[[2]]
+```
