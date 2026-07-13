@@ -46,33 +46,32 @@ Le sei bande esportate per ciascun anno sono: **B2 (Blu), B3 (Verde), B4 (Rosso)
 | **Landsat 8** | 2016 | 30 m (ricampionata/rinominata per coincidere con S2) |
 | **Sentinel-2** | 2021, 2025 | 10 m |
 
-| Banda | Nome comune |
-| :---: | :--- |
-| **B2** | Blu |
-| **B3** | Verde |
-| **B4** | Rosso |
-| **B8** | Vicino Infrarosso (NIR) |
-| **B11** | SWIR 1 |
-| **B12** | SWIR 2 |
-
+| Banda | Nome comune | Su R |
+| :---: | :---: | :--- |
+| **B2** | Blu | [[1]] |
+| **B3** | Verde | [[2]] |
+| **B4** | Rosso | [[3]] |
+| **B8** | Vicino Infrarosso (NIR) | [[4]] |
+| **B11** | SWIR 1 | [[5]] |
+| **B12** | SWIR 2 | [[6]] |
 
 ### Pacchetti utilizzati in R
 
 ````r
-library(terra)
-library(imageRy)
-library(viridis)
-library(ggplot2)
-library(patchwork)
-library(ggridges)
+library(terra)        # Lavorazione raster e immagini satellitari
+library(imageRy)      # Calcolo veloce di indice e funzioni di classificazione
+library(viridis)      # Palette di colori
+library(ggplot2)      # Creazione di grafici a barre di confronto
+library(patchwork)    # Visualizzazione rapida del confronto tra i grafici a barre
+library(ggridges)     # Creazione del ridgeline plot
 ````
 
 # Importazione e visualizzazione delle immagini
 
 ````r
-setwd("C:\\Users\\mmmar\\Desktop\\Uni2\\Telerilevamento geo-ecologico\\Progetto") #impostare la working directori
+setwd("C:\\Users\\mmmar\\Desktop\\Uni2\\Telerilevamento geo-ecologico\\Progetto")   # Impostazione della working directory
 
-tn_2016 = rast("immagini_tessonilo/tessonilo_2016_pre.tif")        #importazione delle immagini
+tn_2016 = rast("immagini_tessonilo/tessonilo_2016_pre.tif")                         # Importazione delle immagini
 tn_2021 = rast("immagini_tessonilo/tessonilo_2021_durante.tif")
 tn_2025 = rast("immagini_tessonilo/tessonilo_2025_dopo.tif")
 ````
@@ -80,7 +79,7 @@ tn_2025 = rast("immagini_tessonilo/tessonilo_2025_dopo.tif")
 ## Bande spettrali
 
 ````r
-plot(tn_2016, col = magma(100))
+plot(tn_2016, col = magma(100))     # Visualizzazione delle bande importate per ogni immagine
 plot(tn_2021, col = magma(100))
 plot(tn_2025, col = magma(100))
 ````
@@ -98,14 +97,14 @@ plot(tn_2025, col = magma(100))
 > Visualizzazione delle 6 bande spettrali (B2, B3, B4, B8, B11, B12) dell'anno 2025.
 
 > [!NOTE]
-> Tutte le immagini in questo progetto sono state esportate impostando larghezza (12 o 15, unità: inches), altezza (8 o 5, unità: inches) e risoluzione (300 DPI) per assicurare una maggiore visibilità di tutte le caratteristiche.
+> Tutte le immagini in questo progetto sono state esportate impostando larghezza, altezza e risoluzione (300 DPI) per assicurare una maggiore visibilità di tutte le caratteristiche.
 
 ## Composizione in colori naturali (True Color)
 
 ````r
 par(mfrow=c(1,3))
-plotRGB(tn_2016, 3, 2, 1, stretch="lin", main = "2016")
-plotRGB(tn_2021, 3, 2, 1, stretch="lin", main = "2021")
+plotRGB(tn_2016, 3, 2, 1, stretch="lin", main = "2016")   # Rappresentazione immagini colori naturali
+plotRGB(tn_2021, 3, 2, 1, stretch="lin", main = "2021")   # 3 = B4, 2 = B3, 1 = B2
 plotRGB(tn_2025, 3, 2, 1, stretch="lin", main = "2025")
 dev.off()
 ````
@@ -118,8 +117,8 @@ dev.off()
 
 ````r
 par(mfrow=c(1,3))
-plotRGB(tn_2016, 4, 3, 2, stretch="lin", main = "2016")
-plotRGB(tn_2021, 4, 3, 2, stretch="lin", main = "2021")
+plotRGB(tn_2016, 4, 3, 2, stretch="lin", main = "2016")   # Rappresentazione immagini in falsi colori
+plotRGB(tn_2021, 4, 3, 2, stretch="lin", main = "2021")   # 4 = B8, 3 = B4, 2 = B3 
 plotRGB(tn_2025, 4, 3, 2, stretch="lin", main = "2025")
 dev.off()
 ````
@@ -147,7 +146,7 @@ plot(dvi_2025, col=inferno(100), main="DVI 2025")
 
 <img width="4500" height="1500" alt="tn_dvi" src="https://github.com/user-attachments/assets/fd1b6451-3015-4244-8512-786388e387e7" />
 
-## Differenze temporali del DVI
+### Differenze temporali del DVI
 
 ````r
 ddvi_16_21 = dvi_2016 - dvi_2021
@@ -161,6 +160,8 @@ plot(ddvi_16_25, col=turbo(100), main="Diff DVI 2016 - 2025 (Prima - Dopo)")
 ````
 
 <img width="4500" height="1500" alt="tn_ddvi" src="https://github.com/user-attachments/assets/5f9e6300-ac7a-46c4-b7ec-b8ce107b4b88" />
+
+> Analizzando le immagini risultanti dalla visualizzazione del DVI1 si intravede il nucleo della foresta ma esso non appare particolarmente distinto dall'ambiente circostante
 
 ## NDVI (Normalized Difference Vegetation Index)
 
@@ -179,11 +180,7 @@ plot(ndvi_2025, col=inferno(100), main="NDVI 2025")
 
 <img width="4500" height="1500" alt="tn_ndvi" src="https://github.com/user-attachments/assets/08418a4c-4d41-4533-84f1-c97670a9f395" />
 
-> **COMMENTO**
->
-> [Spazio per il tuo commento personale: descrivi qui cosa noti confrontando i valori di NDVI tra 2016, 2021 e 2025 nelle diverse zone del parco]
-
-## Differenze temporali dell'NDVI
+### Differenze temporali dell'NDVI
 
 ````r
 dndvi_16_21 = ndvi_2016 - ndvi_2021
@@ -197,6 +194,12 @@ plot(dndvi_16_25, col=turbo(100), main="Diff NDVI 2016 - 2025 (Prima - Dopo)")
 ````
 
 <img width="4500" height="1500" alt="tn_dndvi" src="https://github.com/user-attachments/assets/5f26b14a-f474-4a86-ac1c-1b3bd586dc20" />
+
+> Nelle immagini realizzate con l'NDVI la differenza tra la foresta e l'ambiente circostante diventa molto più nitida per gli anni 2016 e 2021. Allo stesso modo nell'anno 2025 i valori alti dell'NDVI aumentano di molto e si espandono anche nella parte occidentale del parco, creando così l'impressione che la foresta si sia ampliata.
+>
+> Dall'articolo di Susant et al. (2026) sappiamo che non è così. L'NDVI non riesce quindi a discriminare efficientemente tra vegetazione secondaria (habitat degradati e colture di palma da olio) e vegetazione primaria (la foresta).
+>
+> Ho quindi cercato altri indici che riuscissero a dare informazioni in più e a chiarire la situazione.
 
 ## NDWI di Gao (Normalized Difference Water Index)
 
@@ -461,13 +464,8 @@ Questi risultati sono coerenti con quanto riportato in letteratura sulla provinc
 # 🌐 Sitografia e bibliografia
 
 ### Contesto ecologico e conservazionistico
-- Margono, B. A., Turubanova, S., Zhuravleva, I., Potapov, P., Tyukavina, A., Baccini, A., Goetz, S., Hansen, M. C. (2012). *Mapping and monitoring deforestation and forest degradation in Sumatra (Indonesia) using Landsat time series data sets from 1990 to 2010*. Environmental Research Letters, 7(3), 034010. Studio di riferimento sulla perdita di foresta primaria a Sumatra, incluso il ruolo della provincia di Riau (dove si trova Tesso Nilo) come una delle aree a maggiore tasso di deforestazione dell'isola.
-- Luskin, M. S., Albert, W. R., Tobler, M. W. (2017). *Sumatran tiger survival threatened by deforestation despite increasing densities in parks*. Nature Communications, 8, 1783. Analizza il legame tra perdita di foresta e declino delle popolazioni di tigre di Sumatra, citando esplicitamente Tesso Nilo tra i paesaggi con più alto tasso di deforestazione (2000-2012).
-- Lenzen, M., Moran, D., Kanemoto, K., Foran, B., Lobefaro, L., Geschke, A. (2012). *International trade drives biodiversity threats in developing nations*. Nature, 486, 109-112. Discute il ruolo del commercio internazionale, incluso l'olio di palma indonesiano e malese, come driver indiretto delle minacce alla biodiversità.
 - Pramudita, S. A. E., Mamesah, T. P. C. (2025). *The Impact of Deforestation on Protected Animal Populations in Sumatra: Analysis of Global Forest Watch and IUCN Red List Data*. Vivaterra: Journal of Nature, Plants and Animals Studies, 1(1), 27-35. Fornisce stime aggiornate sulle popolazioni di orangotango, tigre ed elefante di Sumatra e sul ruolo delle piantagioni di palma da olio e acacia nella deforestazione di Riau, Jambi e Sumatra del Sud.
 - Susanto, D., Atmojo, J.T., Nugroho, P. et al. (2026). *Unraveling the vulnerability o0f protected areas to oil palm expansion: The case from Tesso Nilo National Park, Sumatra, Indonesia*. Environmental Management 76, 8.
-- https://wwf.panda.org/es/?70060/Elephants-released-in-Indonesias-Tesso-Nilo-National-Park
-- https://www.sumatranelephantproject.org/
 
 ### Piattaforme dati e librerie software
 - **Google Earth Engine**: https://earthengine.google.com/ (Piattaforma cloud per il pre-processing e l'estrazione dei dati raster).
