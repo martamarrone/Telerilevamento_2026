@@ -459,9 +459,9 @@ im.ridgeline(ndwi_stack, scale=1, palette="plasma") + theme_minimal()
 
 <img width="1800" height="1200" alt="ridgeline_plot" src="https://github.com/user-attachments/assets/35b52c65-62de-4d19-ab55-5d16e434b89b" />
 
-> **COMMENTO**
+> La distribuzione dei valori dell'NDWI si sposta gradualmente verso valori più bassi: nel 2016 si vede un netto picco nei valori più alti (la foresta), mentre negli anni successi i valori si spostano fino a formare un picco di valori medi nel 2025.
 >
-> [Spazio per il tuo commento personale: descrivi come si sposta la distribuzione dell'NDWI tra il 2016, il 2021 e il 2025, e cosa indica questo spostamento in termini di umidità/integrità della foresta]
+> L'NDWI è sensibile al contenuto in acqua della vegetazione e alla sua umidità, valori più alti rappresentano quindi un ecosistema con vegetazione più strutturata e complessa (Gao, 1996). Quindi questo spostamento nei valori dell'NDWI si può interpretare come una trasformazione del suolo da un habitat più complesso e strutturato (la foresta) a habitat più degradati o con meno complessità (monocolture, suolo nudo e infrastrutture urbane). 
 
 # 📝 Conclusioni
 
@@ -476,6 +476,7 @@ Questi risultati sono coerenti con quanto riportato in letteratura sulla provinc
 ### Contesto ecologico e conservazionistico
 - Pramudita, S. A. E., Mamesah, T. P. C. (2025). *The Impact of Deforestation on Protected Animal Populations in Sumatra: Analysis of Global Forest Watch and IUCN Red List Data*. Vivaterra: Journal of Nature, Plants and Animals Studies, 1(1), 27-35. Fornisce stime aggiornate sulle popolazioni di orangotango, tigre ed elefante di Sumatra e sul ruolo delle piantagioni di palma da olio e acacia nella deforestazione di Riau, Jambi e Sumatra del Sud.
 - Susanto, D., Atmojo, J.T., Nugroho, P. et al. (2026). *Unraveling the vulnerability o0f protected areas to oil palm expansion: The case from Tesso Nilo National Park, Sumatra, Indonesia*. Environmental Management 76, 8.
+- Gao B. (1996). *NDWI—A normalized difference water index for remote sensing of vegetation liquid water from space*
 
 ### Piattaforme dati e librerie software
 - **Google Earth Engine**: https://earthengine.google.com/ (Piattaforma cloud per il pre-processing e l'estrazione dei dati raster).
