@@ -37,7 +37,7 @@ Le immagini sono state acquisite tramite il portale [Google Earth Engine](https:
 Le sei bande esportate per ciascun anno sono: **B2 (Blu), B3 (Verde), B4 (Rosso), B8 (NIR), B11 (SWIR1), B12 (SWIR2)**.
 
 > [!NOTE]
-> Il codice JavaScript utilizzato per l'acquisizione e l'esportazione delle immagini è disponibile nel file `code.js`.
+> Il codice JavaScript utilizzato per l'acquisizione e l'esportazione delle immagini è disponibile nel file `ESAME.js`.
 
 ### Caratteristiche dei sensori
 
