@@ -195,15 +195,17 @@ plot(dndvi_16_25, col=turbo(100), main="Diff NDVI 2016 - 2025 (Prima - Dopo)")
 
 <img width="4500" height="1500" alt="tn_dndvi" src="https://github.com/user-attachments/assets/5f26b14a-f474-4a86-ac1c-1b3bd586dc20" />
 
+> **LIMITAZIONI NDVI**
+>
 > Nelle immagini realizzate con l'NDVI la differenza tra la foresta e l'ambiente circostante diventa molto più nitida per gli anni 2016 e 2021. Allo stesso modo nell'anno 2025 i valori alti dell'NDVI aumentano di molto e si espandono anche nella parte occidentale del parco, creando così l'impressione che la foresta si sia ampliata.
 >
 > Dall'articolo di Susant et al. (2026) sappiamo che non è così. L'NDVI non riesce quindi a discriminare efficientemente tra vegetazione secondaria (habitat degradati e colture di palma da olio) e vegetazione primaria (la foresta).
 >
-> Ho quindi cercato altri indici che riuscissero a dare informazioni in più e a chiarire la situazione.
+> Ho quindi cercato altri indici che riuscissero a dare informazioni in più PER chiarire la situazione.
 
 ## NDWI di Gao (Normalized Difference Water Index)
 
-L'NDWI di Gao sfrutta la differente risposta spettrale tra la banda del vicino infrarosso (NIR, B8) e la banda SWIR1 (B11), ed è particolarmente sensibile al contenuto d'acqua e all'umidità della vegetazione. È stato utilizzato in questo progetto perché, a differenza del solo NDVI, permette di cogliere meglio la differenza di umidità tra la foresta primaria (più umida, chiusa e ombreggiata) e la vegetazione secondaria/palma da olio (più aperta e meno idratata).
+L'NDWI di Gao sfrutta la differente risposta spettrale tra la banda del vicino infrarosso (NIR, B8) e la banda SWIR1 (B11), ed è particolarmente sensibile al contenuto d'acqua e all'umidità della vegetazione. A differenza del solo NDVI, permette di cogliere meglio la differenza di umidità tra la foresta primaria (più umida, chiusa e ombreggiata) e la vegetazione secondaria/palma da olio (più aperta e meno idratata).
 
 $` NDWI = \frac{NIR - SWIR1}{NIR + SWIR1} `$
 
@@ -218,13 +220,8 @@ plot(ndwi_2021, col=inferno(100), main="NDWI 2021")
 plot(ndwi_2025, col=inferno(100), main="NDWI 2025")
 ````
 
-L'utilizzo combinato di più indici nasce dalla necessità di superare i limiti del solo NDVI, che da solo non è risultato sufficientemente efficace nel discriminare in modo netto la foresta primaria residua dalla vegetazione secondaria (palma da olio) e dalle aree antropizzate.
-
 <img width="4500" height="1500" alt="tn_ndwi" src="https://github.com/user-attachments/assets/98e6c314-e637-48e2-a87d-d6acd52eadaa" />
 
-> **COMMENTO**
->
-> [Spazio per il tuo commento personale: descrivi qui come l'NDWI evidenzia meglio dell'NDVI la contrazione della foresta primaria umida, in particolare nel settore ovest del parco]
 
 ## Differenze temporali dell'NDWI
 
@@ -241,9 +238,11 @@ plot(dndwi_16_25, col=turbo(100), main="Diff NDWI 2016 - 2025 (Prima - Dopo)")
 
 <img width="4500" height="1500" alt="tn_diff_ndwi" src="https://github.com/user-attachments/assets/24ebab59-1c94-43a5-88df-87c1a800c544" />
 
+> Dallo studio dell'NDWI la differenza tra la foresta e l'ambiente circostante diventa assolutamente netta. Anche nel 2025, nelle aree in cui l'NDVI aveva valori molto simili a quelli dell'area forestale, l'NDWI ci permette di discriminare in modo netto la vegetazione secondaria dalla foresta e risulta evidente il notevole restringimento di quest'ultima negli anni. 
+
 ## UI (Urban Index)
 
-L'Urban Index sfrutta il contrasto tra la banda SWIR2 (B12), sensibile a suoli nudi e superfici impermeabili, e la banda NIR (B8), sensibile alla vegetazione. È stato incluso in questo progetto perché evidenzia in modo più diretto rispetto agli indici di vegetazione l'espansione dei suoli nudi e delle infrastrutture (strade, piazzole, insediamenti) ai margini della foresta primaria residua.
+Infine è stato calcolato l'Urban Index, che sfrutta il contrasto tra la banda SWIR2 (B12), particolarmente sensibile a suoli nudi e superfici impermeabili, e la banda NIR (B8), sensibile alla vegetazione. 
 
 $` UI = \frac{SWIR2 - NIR}{SWIR2 + NIR} `$
 
@@ -260,10 +259,6 @@ plot(ui_2025, col=inferno(100), main="UI 2025")
 
 <img width="4500" height="1500" alt="tn_ui" src="https://github.com/user-attachments/assets/1e49ac8e-77c2-4cf7-af7a-e7fab66abb42" />
 
-> **COMMENTO**
->
-> [Spazio per il tuo commento personale: descrivi qui dove si concentra l'espansione dei suoli nudi/infrastrutture secondo l'UI, e se coincide con le aree di conversione della foresta primaria]
-
 ## Differenze temporali dell'UI
 
 ````r
@@ -279,7 +274,13 @@ plot(dui_16_25, col=turbo(100), main="Diff UI 2016 - 2025 (Prima - Dopo)")
 
 <img width="4500" height="1500" alt="tn_diff_ui" src="https://github.com/user-attachments/assets/7d389e9f-5925-4e99-84c5-b2de5dfbb0be" />
 
-# 🗂️ Classificazione
+> A differenza degli indici precedenti l'UI ha valori più alti in corrispondenza di suoli nudi e infrastrutture.
+>
+> Generalmente usato per rendere evidente l'ampliazione di una zona urbana, in realtà i valori di riflettanza della banda SWIR2 per infrastrutture urbane e suoli nudi sono molto simili. Questo lo rende particolarmente utile per evidenziare l'espansione di questi due elementi ai margini della foresta, possiamo notare infatti che si ristringono intorno ad essa anno dopo anno.
+>
+> Quindi l'NDWI e l'UI ci danno informazioni complementari, il primo si concentra sulla vegetazione della foresta primaria mentre il secondo sugli impatti antropici che la minacciano e danneggiano.
+
+# Classificazione
 
 Per stimare la frequenza delle diverse coperture del suolo (foresta primaria, vegetazione secondaria/palma da olio, suolo nudo/infrastrutture) è stata scelta una classificazione non supervisionata a 3 classi, applicata sia all'NDVI sia all'NDWI, così da poter confrontare la capacità dei due indici di discriminare le classi di interesse.
 
@@ -306,11 +307,11 @@ Le classi individuate dall'algoritmo non supervisionato sono state riordinate su
 - **Classe 3**: Vegetazione primaria
 
 ````r
-class_ndvi_2016 = subst(class_ndvi_2016_raw, from = c(1, 2, 3), to = c(1, 3, 2))
+class_ndvi_2016 = subst(class_ndvi_2016_raw, from = c(1, 2, 3), to = c(1, 3, 2))                                               # Riordinazione e assegnazione delle classi corrette 
 class_ndvi_2021 = subst(class_ndvi_2021_raw, from = c(1, 2, 3), to = c(3, 1, 2))
 class_ndvi_2025 = subst(class_ndvi_2025_raw, from = c(1, 2, 3), to = c(1, 2, 3))
 
-colori = c("suolo nudo" = "burlywood4", "vegetazione secondaria" = "darkgoldenrod1", "vegetazione primaria" = "forestgreen")
+colori = c("suolo nudo" = "burlywood4", "vegetazione secondaria" = "darkgoldenrod1", "vegetazione primaria" = "forestgreen")   # Scelta e assegnazione dei colori per ogni classe
 
 par(mfrow=c(1,3))
 plot(class_ndvi_2016, col=colori, main="Classi NDVI 2016")
@@ -370,27 +371,33 @@ plot(class_ndwi_2025, col=colori, main="Classi NDWI 2025", legend = FALSE)
 
 <img width="3600" height="2400" alt="classi_confronto" src="https://github.com/user-attachments/assets/e75eaafa-865a-4484-85d4-ac03c7bcfb7f" />
 
-> **COMMENTO**
+> **CONFRONTO NDVI E NDWI**
 >
-> [Spazio per il tuo commento personale: quale dei due indici (NDVI o NDWI) discrimina meglio le tre classi nel tuo caso, e perché]
+> Realizzando la divisione in classi con l'NDVI risulta evidente ciò che s'ipotiazzava già con la sola visualizzazione degli indici, ovvero: l'NDVI non riesce a discriminare bene questi due tipi di vegetazione e, nuovamente, la foresta nel 2025 sembrerebbe espandersi.
+>
+> Invece, la classificazione fatta a partire dall'NDWI ci mostra come nel 2021, anno di intensa deforestazione, aumenti la quantità di suolo nudo all'interno del parco. Mentre nel 2025 ad aumentare notevolmente è la quantità di vegetazione secondaria fenomeno che, grazie alla letteratura scientifica, sappiamo essere riconducibile all'espansione e stabilizzazioni delle colture illegali di palme da olio.
+>
+> Per questi motivi, per le prossime analisi, utilizzerò l'NDWI invece dell'NDVI, in modo da ottenere risultati più rappresentativi.
 
 ## Calcolo delle frequenze percentuali per classe
 
 ````r
-f2016 = freq(class_ndwi_2016) 
+f2016 = freq(class_ndwi_2016)                                                 # Calcolo della frequenza assoluta dei pixel per ciascuna classe
 f2021 = freq(class_ndwi_2021) 
 f2025 = freq(class_ndwi_2025)
 
-prop2016 = f2016$count / sum(f2016$count) 
+prop2016 = f2016$count / sum(f2016$count)                                     # Calcolo della frequenza relativa
 prop2021 = f2021$count / sum(f2021$count)
-prop2025 = f2025$count / sum(f2025$count) 
+prop2025 = f2025$count / sum(f2025$count)
 
-perc2016 = prop2016 * 100 
+# Siccome l'immagine dell'area del parco contiene molti pixel senza alcun valore (spazi bianchi intorno), la frequenza relativa non è calcolata rispetto al numero totale di pixel ma al numero totale di pixel che sono associati a una classe 
+
+perc2016 = prop2016 * 100                                                     # Trasformazione delle frequenze relative in valori percentuali
 perc2021 = prop2021 * 100 
 perc2025 = prop2025 * 100
 
-tabella = data.frame(
-  class = c("suolo nudo", "vegetazione secondaria", "vegetazione primaria"),
+tabella = data.frame(                                                         # Creazione di una tabella riassuntiva per esporre i risultati
+  class = c("suolo nudo", "vegetazione secondaria", "vegetazione primaria"), 
   percentuale2016 = perc2016,
   percentuale2021 = perc2021,
   percentuale2025 = perc2025
@@ -405,12 +412,15 @@ tabella
 | **Vegetazione secondaria** | 37.81 % | 36.30 % | 48.04 % |
 | **Vegetazione primaria** | 42.71 % | 44.60 % | 35.24 % |
 
-I dati confermano quantitativamente quanto osservato nelle mappe: la vegetazione primaria, dopo un lieve aumento tra il 2016 e il 2021 (dal 42.71% al 44.60%), subisce un calo netto nel 2025 (35.24%), con una perdita complessiva di circa 7,5 punti percentuali rispetto al 2016. Parallelamente, la vegetazione secondaria (riconducibile in larga parte alla palma da olio) cresce in modo marcato, passando dal 37.81% al 48.04% tra il 2016 e il 2025. Il suolo nudo/infrastrutture, invece, mostra una lieve diminuzione percentuale complessiva, pur restando presente in modo diffuso ai margini del parco.
+I dati mostrano che la vegetazione primaria, dopo un lieve aumento tra il 2016 e il 2021 (dal 42.71% al 44.60%), subisce un calo netto nel 2025 (35.24%), con una perdita complessiva di circa 7,5 punti percentuali rispetto al 2016. Parallelamente, la vegetazione secondaria (riconducibile in larga parte alla palma da olio) cresce in modo marcato, passando dal 37.81% al 48.04% tra il 2016 e il 2025. Il suolo nudo/infrastrutture, invece, pur aumentando la sua presenza intorno alla foresta, diminuisce in modo diffuso con un netto calo soprattutto tra il 2021 e il 2025.
+
 
 ## Grafici a barre di confronto
 
+Ora utilizziamo il pacchetto `ggplot` per realizzare dei grafici a barre che rappresentino visivamente le frequenze relative percentuali delle varie classi, successivamente utilizziamo il pacchetto `patchwork` per affiancarli e quindi confrontarli più rapidamente.
+
 ````r
-p1 = ggplot(tabella, aes(x = class, y = percentuale2016, fill = class)) + 
+p1 = ggplot(tabella, aes(x = class, y = percentuale2016, fill = class)) +    # Realizzazione dei grafici
   geom_bar(stat = "identity") + 
   ylim(c(0,100)) + 
   labs(title="2016", x="Classe", y="Percentuale (%)") +
@@ -431,7 +441,7 @@ p3 = ggplot(tabella, aes(x = class, y = percentuale2025, fill = class)) +
   scale_fill_manual(values = colori) +
   theme(legend.position="none")
 
-p1 + p2 + p3
+p1 + p2 + p3                                                                # Visualizzazione dei grafici affiancati
 ````
 
 <img width="4500" height="1800" alt="grafico_barre_confronto" src="https://github.com/user-attachments/assets/cf2d2e7e-2151-4249-903a-98886f9703fe" />
