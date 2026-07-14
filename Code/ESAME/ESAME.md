@@ -1,5 +1,5 @@
 >> ### Esame di Telerilevamento geo-ecologico in R 2026
-> > Marta Marrone mat. [INSERISCI MATRICOLA]
+> > Marta Marrone mat. 0001237880
 
 # Analisi temporale della degradazione della foresta tropicale nel Parco Nazionale di Tesso Nilo, Sumatra 
 ### 🐯🦧🐘 Monitoraggio della perdita di habitat di specie endemiche per via della trasformazione in colture di palma da olio
