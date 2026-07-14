@@ -473,12 +473,13 @@ im.ridgeline(ndwi_stack, scale=1, palette="plasma") + theme_minimal()
 >
 > L'NDWI è sensibile al contenuto in acqua della vegetazione e alla sua umidità, valori più alti rappresentano quindi un ecosistema con vegetazione più strutturata e complessa (Gao, 1996). Quindi questo spostamento nei valori dell'NDWI si può interpretare come una trasformazione del suolo da un habitat più complesso e strutturato (la foresta) a habitat più degradati o con meno complessità (monocolture, suolo nudo e infrastrutture urbane), in cui avviene molta più evaporazione e che sono meno in grado di trattenere l'acqua. 
 
-# 📝 Conclusioni
+# Conclusioni
 
 L'analisi multitemporale condotta sul Parco Nazionale di Tesso Nilo tra il 2016 e il 2025 conferma un progressivo processo di conversione della foresta primaria, concentrato in particolare nel settore orientale del parco, a vantaggio soprattutto della vegetazione secondaria riconducibile alla palma da olio e, in misura minore, di suoli nudi e infrastrutture. La classificazione ecologica calibrata mostra che la foresta primaria è passata dal 42.71% del 2016 al 35.24% del 2025, mentre la vegetazione secondaria è cresciuta dal 37.81% al 48.04% nello stesso periodo.
+
 Allo stesso modo il confronto tra le classi del 2016 e del 2021, anche essendo visivamente chiaro, a livello quantitativo mostra differenze piccole ma opposte a quelle che ci si aspetterebbe. Per esempio sembrerebbe indicare un leggero aumento della foresta primaria, invece di una diminuzione (come è effettivamente avvenuto, Susanto et al., 2026), questo potrebbe essere implicabile a due fattori: 
 + *L'utilizzo del Satellite Landsat8 per l'anno 2016* - questo satellite ha una risoluzione di 30 m per tutte le bande mentre Sentinel2 ha una risoluzione di 10 m per il NIR e 20 per lo SWIR1. Quindi il satellite Sentinel2 potrebbe essere stato più efficacie nel distinguere le parti forestali più frammentate nel settore ovest del parco.
-+ *La variabilità climatica* - Nel 2015 e nel 2016 si è osservato uno dei più forti eventi di El Niño registrato nella storia recente, invece il 2021 era un anno con clima soggetto agli eventi de La Niña (International Research Institute for Climate and Society, 2026). Questo per l'Indonesia vuol dire che il 2016 è stato un anno particolarmente secco con poche precipitazioni (meno umidità e acqua nelle chiome) mentre il 2021 è stato un anno più umido con più precipitazioni (più umidità e acqua nelle chiome), le mie classificazioni sono realizzate a partire dal NDWI che è particolarmente sensibile proprio al fattore umidità e contenuto d'acqua nella vegetazione.
++ *La variabilità climatica* - Nel 2015 e nel 2016 si è osservato uno dei più forti eventi di El Niño registrato nella storia recente, invece il 2021 era un anno con clima soggetto agli eventi de La Niña (International Research Institute for Climate and Society, 2026). Questo per l'Indonesia vuol dire che il 2016 è stato un anno particolarmente secco con poche precipitazioni (meno umidità e acqua nelle chiome) mentre il 2021 è stato un anno più umido con più precipitazioni (più umidità e acqua nelle chiome), le classificazioni presenti in questo progetto sono state realizzate a partire dall'NDWI che è particolarmente sensibile proprio al fattore umidità e contenuto d'acqua nella vegetazione.
 In questo modo il progetto mostra l'importanza di usare in modo integrato diversi indici per avere una visione più completa possibile di ciò che si sta monitorando. Il solo NDVI si è rivelato per esempio uno strumento parzialmente limitato nel distinguere con nettezza le tre classi di copertura, motivo per cui l'analisi è stata affiancata dal calcolo dell'NDWI di Gao, più sensibile al contenuto idrico e quindi capace di discriminare meglio la foresta primaria (più chiusa e umida) dalla vegetazione secondaria, e dall'Urban Index, utile per isolare più chiaramente l'espansione dei suoli nudi e delle infrastrutture ai margini della foresta.
 In conclusione questo studio identifica un trend coerente a quello riportato in letteratura, evidenziando un'importante riduzione della copertura forestale nel Parco Nazionale del Tesso Nilo a favore dell'espansione (in gran parte illegale) delle colture di palme da olio, questo corrisponde a una grave perdita di habitat per specie endemiche già a rischio di estinzione. Si delinea quindi come necessario il monitoraggio satellitare continuo per tutelare quest'area di cruciale importanza per la biodiversità
 
@@ -491,9 +492,8 @@ In conclusione questo studio identifica un trend coerente a quello riportato in 
 - International Research Institute for Climate and Society. (2026). *ENSO Climate Forecasts*. Columbia Climate School, Columbia University. https://iri.columbia.edu/our-expertise/climate/forecasts/enso/current/ [consultato il 14 luglio 2026]
 
 ### Piattaforme dati e librerie software
-- **Google Earth Engine**: https://earthengine.google.com/ (Piattaforma cloud per il pre-processing e l'estrazione dei dati raster).
-- **CRAN Repository**: https://cran.r-project.org/ (Documentazione ufficiale dei pacchetti R utilizzati: `terra`, `ggplot2`, `imageRy`, `viridis`, `patchwork`, `ggridges`).
-- **Copernicus Data Space Ecosystem**: https://dataspace.copernicus.eu/ (Consultato per la verifica delle specifiche tecniche delle bande spettrali di Sentinel-2).
-- **World Database on Protected Areas (WDPA)**: dataset dei confini del Parco Nazionale di Tesso Nilo utilizzato in Google Earth Engine (`WCMC/WDPA/current/polygons`).
+- **Google Earth Engine**: https://earthengine.google.com/
+- **CRAN Repository**: https://cran.r-project.org/ 
+- **World Database on Protected Areas (WDPA)**
 
 # Grazie per l'attenzione! 🐯🦧🐘
