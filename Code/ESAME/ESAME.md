@@ -144,7 +144,7 @@ plot(dvi_2025, col=inferno(100), main="DVI 2025")
 
 <img width="4500" height="1500" alt="tn_dvi" src="https://github.com/user-attachments/assets/fd1b6451-3015-4244-8512-786388e387e7" />
 
-> Analizzando le immagini risultanti dalla visualizzazione del DVI1 si intravede il nucleo della foresta ma esso non appare particolarmente distinto dall'ambiente circostante
+> Analizzando le immagini risultanti dalla visualizzazione del DVI si intravede il nucleo della foresta ma esso non appare particolarmente distinto dall'ambiente circostante.
 
 ### Differenze temporali del DVI
 
