@@ -44,7 +44,7 @@ Le sei bande esportate per ciascun anno sono: **B2 (Blu), B3 (Verde), B4 (Rosso)
 | Sensore | Anno | Risoluzione spaziale (bande usate) |
 | :---: | :---: | :--- |
 | **Landsat 8** | 2016 | 30 m (ricampionata/rinominata per coincidere con S2) |
-| **Sentinel-2** | 2021, 2025 | 10 m |
+| **Sentinel-2** | 2021, 2025 | 10-20 m |
 
 | Banda | Nome comune | Su R |
 | :---: | :---: | :--- |
@@ -276,7 +276,7 @@ plot(dui_16_25, col=turbo(100), main="Diff UI 2016 - 2025 (Prima - Dopo)")
 
 > A differenza degli indici precedenti l'UI ha valori più alti in corrispondenza di suoli nudi e infrastrutture.
 >
-> Generalmente usato per rendere evidente l'ampliazione di una zona urbana, in realtà i valori di riflettanza della banda SWIR2 per infrastrutture urbane e suoli nudi sono molto simili. Questo lo rende particolarmente utile per evidenziare l'espansione di questi due elementi ai margini della foresta, possiamo notare infatti che si ristringono intorno ad essa anno dopo anno.
+> Generalmente usato per rendere evidente l'ampliazione di una zona urbana, in realtà i valori di riflettanza della banda SWIR2 per infrastrutture urbane e suoli nudi sono molto simili. Questo lo rende particolarmente utile per evidenziare l'espansione di questi due elementi a scapito della foresta, possiamo notare infatti che si ristringono intorno ad essa anno dopo anno.
 >
 > Quindi l'NDWI e l'UI ci danno informazioni complementari, il primo si concentra sulla vegetazione della foresta primaria mentre il secondo sugli impatti antropici che la minacciano e danneggiano.
 
@@ -461,7 +461,7 @@ im.ridgeline(ndwi_stack, scale=1, palette="plasma") + theme_minimal()
 
 > La distribuzione dei valori dell'NDWI si sposta gradualmente verso valori più bassi: nel 2016 si vede un netto picco nei valori più alti (la foresta), mentre negli anni successi i valori si spostano fino a formare un picco di valori medi nel 2025.
 >
-> L'NDWI è sensibile al contenuto in acqua della vegetazione e alla sua umidità, valori più alti rappresentano quindi un ecosistema con vegetazione più strutturata e complessa (Gao, 1996). Quindi questo spostamento nei valori dell'NDWI si può interpretare come una trasformazione del suolo da un habitat più complesso e strutturato (la foresta) a habitat più degradati o con meno complessità (monocolture, suolo nudo e infrastrutture urbane). 
+> L'NDWI è sensibile al contenuto in acqua della vegetazione e alla sua umidità, valori più alti rappresentano quindi un ecosistema con vegetazione più strutturata e complessa (Gao, 1996). Quindi questo spostamento nei valori dell'NDWI si può interpretare come una trasformazione del suolo da un habitat più complesso e strutturato (la foresta) a habitat più degradati o con meno complessità (monocolture, suolo nudo e infrastrutture urbane), in cui avviene molta più evaporazione e che sono meno in grado di trattenere l'acqua. 
 
 # 📝 Conclusioni
 
@@ -474,9 +474,10 @@ Questi risultati sono coerenti con quanto riportato in letteratura sulla provinc
 # 🌐 Sitografia e bibliografia
 
 ### Contesto ecologico e conservazionistico
-- Pramudita, S. A. E., Mamesah, T. P. C. (2025). *The Impact of Deforestation on Protected Animal Populations in Sumatra: Analysis of Global Forest Watch and IUCN Red List Data*. Vivaterra: Journal of Nature, Plants and Animals Studies, 1(1), 27-35. Fornisce stime aggiornate sulle popolazioni di orangotango, tigre ed elefante di Sumatra e sul ruolo delle piantagioni di palma da olio e acacia nella deforestazione di Riau, Jambi e Sumatra del Sud.
+- Pramudita, S. A. E., Mamesah, T. P. C. (2025). *The Impact of Deforestation on Protected Animal Populations in Sumatra: Analysis of Global Forest Watch and IUCN Red List Data*. Vivaterra: Journal of Nature, Plants and Animals Studies, 1(1), 27-35.
 - Susanto, D., Atmojo, J.T., Nugroho, P. et al. (2026). *Unraveling the vulnerability o0f protected areas to oil palm expansion: The case from Tesso Nilo National Park, Sumatra, Indonesia*. Environmental Management 76, 8.
 - Gao B. (1996). *NDWI—A normalized difference water index for remote sensing of vegetation liquid water from space*
+- International Research Institute for Climate and Society. (2026). *ENSO Climate Forecasts*. Columbia Climate School, Columbia University. https://iri.columbia.edu/our-expertise/climate/forecasts/enso/current/ [consultato il 14 luglio 2026]
 
 ### Piattaforme dati e librerie software
 - **Google Earth Engine**: https://earthengine.google.com/ (Piattaforma cloud per il pre-processing e l'estrazione dei dati raster).
