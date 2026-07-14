@@ -388,6 +388,8 @@ plot(class_ndwi_2025, col=colori, main="Classi NDWI 2025", legend = FALSE)
 
 ## Calcolo delle frequenze percentuali per classe
 
+Per quantificare quanto terreno è occupato dalle varie classi durante gli anni, calcoliamo le frequenze percentuali:
+
 ````r
 f2016 = freq(class_ndwi_2016)                                                 # Calcolo della frequenza assoluta dei pixel per ciascuna classe
 f2021 = freq(class_ndwi_2021) 
@@ -397,7 +399,8 @@ prop2016 = f2016$count / sum(f2016$count)                                     # 
 prop2021 = f2021$count / sum(f2021$count)
 prop2025 = f2025$count / sum(f2025$count)
 
-# Siccome l'immagine dell'area del parco contiene molti pixel senza alcun valore (NA, spazi bianchi intorno al parco), la frequenza relativa non è calcolata rispetto al numero totale di pixel ma al numero totale di pixel che sono associati a una classe 
+# Siccome l'immagine dell'area del parco contiene molti pixel senza alcun valore (NA, spazi bianchi intorno al parco),
+# la frequenza relativa non è calcolata rispetto al numero totale di pixel ma al numero totale di pixel che sono associati a una classe 
 
 perc2016 = prop2016 * 100                                                     # Trasformazione delle frequenze relative in valori percentuali
 perc2021 = prop2021 * 100 
