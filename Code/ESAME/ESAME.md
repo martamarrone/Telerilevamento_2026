@@ -123,7 +123,7 @@ dev.off()
 
 <img width="4500" height="1500" alt="tn_fc" src="https://github.com/user-attachments/assets/ff84fb2b-c3e8-4d4d-a6af-c4d963dde85d" />
 
-> Confronto in falsi colori (RGB 4,3,2): la vegetazione sana appare in rosso acceso, mentre il suolo nudo e le infrastrutture assumono tonalità chiare/spente. Il confronto tra i tre anni evidenzia già a colpo d'occhio la contrazione della componente rossa più intensa, corrispondente alla foresta primaria, in particolare nel settore orientale del parco.
+> La vegetazione sana appare in rosso acceso, mentre il suolo nudo e le infrastrutture assumono tonalità chiare/spente. Il confronto tra i tre anni evidenzia già a colpo d'occhio la contrazione della componente rossa più intensa, corrispondente alla foresta primaria, in particolare nel settore orientale del parco.
 
 # 🛰️ Indici 
 
