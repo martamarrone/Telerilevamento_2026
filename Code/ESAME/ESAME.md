@@ -11,7 +11,7 @@
 
 # 🌏 Introduzione e area di studio 
 
-Il progetto parte dal desiderio di indagare un esempio di uno dei maggiori fattori di rischio per la fauna selvatica, la perdita e degradazione degli habitat. Sull'isola di Sumatra, il **Parco Nazionale di Tesso Nilo** è un'area protetta situata nella provincia di Riau, comprende un ecosistema di foresta tropicale che rappresenta uno degli ultimi habitat fondamentali per specie endemiche e in pericolo critico di estinzione come la **tigre di Sumatra** (*Panthera tigris sumatrae*), l'**orangotango di Sumatra** (*Pongo abelii*) e l'**elefante di Sumatra** (*Elephas maximus sumatranus*) (Susant et al., 2026).  Nonostante l'area sia protetta dalla presenza del Parco Nazionale, istituito nel 2004, la foresta ad oggi ha perso più del 50% della sua copertura totale (Susant et al., 2026). Negli ultimi decenni Riau è stata la provincia con il più alto tasso di deforestazione dell'intera Sumatra, principalmente a causa dell'espansione illegale delle coltivazioni di palma da olio, anche all'interno dei confini del Parco (Pramudita et al., 2025).
+Il progetto parte dal desiderio di indagare un esempio di uno dei maggiori fattori di rischio per la fauna selvatica, la perdita e degradazione degli habitat. Sull'isola di Sumatra, il **Parco Nazionale di Tesso Nilo** è un'area protetta situata nella provincia di Riau, comprende un ecosistema di foresta tropicale che rappresenta uno degli ultimi habitat fondamentali per specie endemiche e in pericolo critico di estinzione come la **tigre di Sumatra** (*Panthera tigris sumatrae*), l'**orangotango di Sumatra** (*Pongo abelii*) e l'**elefante di Sumatra** (*Elephas maximus sumatranus*) (Susanto et al., 2026).  Nonostante l'area sia protetta dalla presenza del Parco Nazionale, istituito nel 2004, la foresta ad oggi ha perso più del 50% della sua copertura totale (Susanto et al., 2026). Negli ultimi decenni Riau è stata la provincia con il più alto tasso di deforestazione dell'intera Sumatra, principalmente a causa dell'espansione illegale delle coltivazioni di palma da olio, anche all'interno dei confini del Parco (Pramudita et al., 2025).
 
 
 <img width="1753" height="1240" alt="Sumatra_Tesso_Nilo" src="https://github.com/user-attachments/assets/8469fc04-0e3e-456e-a858-eaf399b28831" />
@@ -59,9 +59,9 @@ Le sei bande esportate per ciascun anno sono: **B2 (Blu), B3 (Verde), B4 (Rosso)
 
 ````r
 library(terra)        # Lavorazione raster e immagini satellitari
-library(imageRy)      # Calcolo veloce di indice e funzioni di classificazione
+library(imageRy)      # Calcolo veloce di indici e funzioni di classificazione
 library(viridis)      # Palette di colori
-library(ggplot2)      # Creazione di grafici a barre di confronto
+library(ggplot2)      # Creazione di grafici a barre 
 library(patchwork)    # Visualizzazione rapida del confronto tra i grafici a barre
 library(ggridges)     # Creazione del ridgeline plot
 ````
@@ -102,11 +102,11 @@ plot(tn_2025, col = magma(100))
 ## Composizione in colori naturali (True Color)
 
 ````r
-par(mfrow=c(1,3))
-plotRGB(tn_2016, 3, 2, 1, stretch="lin", main = "2016")   # Rappresentazione immagini colori naturali
-plotRGB(tn_2021, 3, 2, 1, stretch="lin", main = "2021")   # 3 = B4, 2 = B3, 1 = B2
+par(mfrow=c(1,3))                                         # Divisione pannello grafico in una riga e tre colonne
+plotRGB(tn_2016, 3, 2, 1, stretch="lin", main = "2016")   # Rappresentazione immagini colori naturali 
+plotRGB(tn_2021, 3, 2, 1, stretch="lin", main = "2021")   # r = 3 = B4, g = 2 = B3, b = 1 = B2
 plotRGB(tn_2025, 3, 2, 1, stretch="lin", main = "2025")
-dev.off()
+de.off()                                                  # chiusura pannello grafico
 ````
 
 <img width="4500" height="1500" alt="tn_tc" src="https://github.com/user-attachments/assets/ff4357b4-4b59-4fd2-a2e0-39001c33875e" />
@@ -146,6 +146,8 @@ plot(dvi_2025, col=inferno(100), main="DVI 2025")
 
 <img width="4500" height="1500" alt="tn_dvi" src="https://github.com/user-attachments/assets/fd1b6451-3015-4244-8512-786388e387e7" />
 
+> Analizzando le immagini risultanti dalla visualizzazione del DVI1 si intravede il nucleo della foresta ma esso non appare particolarmente distinto dall'ambiente circostante
+
 ### Differenze temporali del DVI
 
 ````r
@@ -161,7 +163,7 @@ plot(ddvi_16_25, col=turbo(100), main="Diff DVI 2016 - 2025 (Prima - Dopo)")
 
 <img width="4500" height="1500" alt="tn_ddvi" src="https://github.com/user-attachments/assets/5f9e6300-ac7a-46c4-b7ec-b8ce107b4b88" />
 
-> Analizzando le immagini risultanti dalla visualizzazione del DVI1 si intravede il nucleo della foresta ma esso non appare particolarmente distinto dall'ambiente circostante
+> Valori positivi (arancio/rosso) = DVI diminuito nel tempo = possibile perdita di vegetazione; valori negativi (azzurro/blu) = DVI aumentato = possibile guadagno. Nel complesso il verde/giallo-verde (variazione quasi nulla) domina su gran parte dell’area e le macchie colorate sono sparse, senza disegnare un confine netto fra nucleo della foresta ed esterno.
 
 ## NDVI (Normalized Difference Vegetation Index)
 
@@ -180,6 +182,12 @@ plot(ndvi_2025, col=inferno(100), main="NDVI 2025")
 
 <img width="4500" height="1500" alt="tn_ndvi" src="https://github.com/user-attachments/assets/08418a4c-4d41-4533-84f1-c97670a9f395" />
 
+> **LIMITAZIONI NDVI**
+>
+> Nelle immagini realizzate con l'NDVI la differenza tra la foresta e l'ambiente circostante diventa molto più nitida per gli anni 2016 e 2021. Allo stesso modo nell'anno 2025 i valori alti dell'NDVI aumentano di molto e si espandono anche nella parte occidentale del parco, creando così l'impressione che la foresta si sia ampliata.
+>
+> Dall'articolo di Susanto et al. (2026) sappiamo che non è così. L'NDVI non riesce quindi a discriminare efficientemente tra vegetazione secondaria (habitat degradati e colture di palma da olio) e vegetazione primaria (la foresta).
+
 ### Differenze temporali dell'NDVI
 
 ````r
@@ -195,13 +203,9 @@ plot(dndvi_16_25, col=turbo(100), main="Diff NDVI 2016 - 2025 (Prima - Dopo)")
 
 <img width="4500" height="1500" alt="tn_dndvi" src="https://github.com/user-attachments/assets/5f26b14a-f474-4a86-ac1c-1b3bd586dc20" />
 
-> **LIMITAZIONI NDVI**
->
-> Nelle immagini realizzate con l'NDVI la differenza tra la foresta e l'ambiente circostante diventa molto più nitida per gli anni 2016 e 2021. Allo stesso modo nell'anno 2025 i valori alti dell'NDVI aumentano di molto e si espandono anche nella parte occidentale del parco, creando così l'impressione che la foresta si sia ampliata.
->
-> Dall'articolo di Susant et al. (2026) sappiamo che non è così. L'NDVI non riesce quindi a discriminare efficientemente tra vegetazione secondaria (habitat degradati e colture di palma da olio) e vegetazione primaria (la foresta).
->
-> Ho quindi cercato altri indici che riuscissero a dare informazioni in più PER chiarire la situazione.
+> I colori dominanti sono il verde e il blu (rispettivamente cambiamento quasi nullo e guadagno di vegetazione), il limite della foresta rimane poco distintivo.
+
+Per via delle limitazioni rscontrate nell'utilizzo dell'NDVI, ho deciso di cercare altri indici che dessero informazioni aggiuntive in modo da rendere più chiara l'evoluzione del paesaggio all'interno del Parco di Tesso Nilo.
 
 ## NDWI di Gao (Normalized Difference Water Index)
 
@@ -222,6 +226,7 @@ plot(ndwi_2025, col=inferno(100), main="NDWI 2025")
 
 <img width="4500" height="1500" alt="tn_ndwi" src="https://github.com/user-attachments/assets/98e6c314-e637-48e2-a87d-d6acd52eadaa" />
 
+> Dallo studio dell'NDWI la differenza tra la foresta e l'ambiente circostante diventa assolutamente netta. Anche nel 2025, nelle aree in cui l'NDVI aveva valori molto simili a quelli dell'area forestale, l'NDWI ci permette di discriminare in modo netto la vegetazione secondaria dalla foresta e risulta evidente il notevole restringimento di quest'ultima negli anni. 
 
 ## Differenze temporali dell'NDWI
 
@@ -238,7 +243,7 @@ plot(dndwi_16_25, col=turbo(100), main="Diff NDWI 2016 - 2025 (Prima - Dopo)")
 
 <img width="4500" height="1500" alt="tn_diff_ndwi" src="https://github.com/user-attachments/assets/24ebab59-1c94-43a5-88df-87c1a800c544" />
 
-> Dallo studio dell'NDWI la differenza tra la foresta e l'ambiente circostante diventa assolutamente netta. Anche nel 2025, nelle aree in cui l'NDVI aveva valori molto simili a quelli dell'area forestale, l'NDWI ci permette di discriminare in modo netto la vegetazione secondaria dalla foresta e risulta evidente il notevole restringimento di quest'ultima negli anni. 
+> Valori positivi (arancio/rosso) = NDWI diminuito nel tempo = perdita di umidità/struttura della chioma; valori negativi (blu) = NDWI aumentato = maggiore umidità/struttura della chioma. E' chiaro il nucleo della foresta che rimane invariato (verde).
 
 ## UI (Urban Index)
 
@@ -259,6 +264,12 @@ plot(ui_2025, col=inferno(100), main="UI 2025")
 
 <img width="4500" height="1500" alt="tn_ui" src="https://github.com/user-attachments/assets/1e49ac8e-77c2-4cf7-af7a-e7fab66abb42" />
 
+> A differenza degli indici precedenti l'UI ha valori più alti in corrispondenza di suoli nudi e infrastrutture.
+>
+> Generalmente usato per rendere evidente l'ampliazione di una zona urbana, in realtà i valori di riflettanza della banda SWIR2 per infrastrutture urbane e suoli nudi sono molto simili. Questo lo rende particolarmente utile per evidenziare l'espansione di questi due elementi a scapito della foresta, possiamo notare infatti che si ristringono intorno ad essa anno dopo anno.
+>
+> Quindi l'NDWI e l'UI ci danno informazioni complementari, il primo si concentra sulla vegetazione della foresta primaria mentre il secondo sugli impatti antropici che la minacciano e danneggiano.
+
 ## Differenze temporali dell'UI
 
 ````r
@@ -274,21 +285,17 @@ plot(dui_16_25, col=turbo(100), main="Diff UI 2016 - 2025 (Prima - Dopo)")
 
 <img width="4500" height="1500" alt="tn_diff_ui" src="https://github.com/user-attachments/assets/7d389e9f-5925-4e99-84c5-b2de5dfbb0be" />
 
-> A differenza degli indici precedenti l'UI ha valori più alti in corrispondenza di suoli nudi e infrastrutture.
->
-> Generalmente usato per rendere evidente l'ampliazione di una zona urbana, in realtà i valori di riflettanza della banda SWIR2 per infrastrutture urbane e suoli nudi sono molto simili. Questo lo rende particolarmente utile per evidenziare l'espansione di questi due elementi a scapito della foresta, possiamo notare infatti che si ristringono intorno ad essa anno dopo anno.
->
-> Quindi l'NDWI e l'UI ci danno informazioni complementari, il primo si concentra sulla vegetazione della foresta primaria mentre il secondo sugli impatti antropici che la minacciano e danneggiano.
+> Valori negativi (blu) = UI aumentato nel tempo = aumento della superficie occupata dal suolo nudo/infrastrutture; valori positivi (arancio/rosso) = UI diminuito nel tempo = aumento della superficie occupata dalla vegetazione. I valori più bassi si concentrano soprattutto ai margini del parco, quindi è una confermadell'espansione di suolo nuso/infrastrutture intorno al nucleo forestale residuo.
 
 # Classificazione
 
-Per stimare la frequenza delle diverse coperture del suolo (foresta primaria, vegetazione secondaria/palma da olio, suolo nudo/infrastrutture) è stata scelta una classificazione non supervisionata a 3 classi, applicata sia all'NDVI sia all'NDWI, così da poter confrontare la capacità dei due indici di discriminare le classi di interesse.
+Per stimare la frequenza delle diverse coperture del suolo (foresta primaria, vegetazione secondaria/palma da olio, suolo nudo/infrastrutture) è stata scelta una classificazione a 3 classi (prima non superviosionata e poi corretta su base ecosistemica), applicata sia all'NDVI sia all'NDWI, così da poter confrontare la capacità dei due indici di discriminare le classi di interesse.
 
 ## Classificazione non supervisionata dell'NDVI
 
 ````r
-class_ndvi_2016_raw = im.classify(ndvi_2016, num_clusters = 3, seed = 42)
-class_ndvi_2021_raw = im.classify(ndvi_2021, num_clusters = 3, seed = 42)
+class_ndvi_2016_raw = im.classify(ndvi_2016, num_clusters = 3, seed = 42)   # Raggruppamento non supervisionato dei pixel in 3 classi
+class_ndvi_2021_raw = im.classify(ndvi_2021, num_clusters = 3, seed = 42)   # Impostare un seme serve per rendere il risultato riproducibile
 class_ndvi_2025_raw = im.classify(ndvi_2025, num_clusters = 3, seed = 42)
 
 par(mfrow=c(1,3))
@@ -298,6 +305,8 @@ plot(class_ndvi_2025_raw, main="Classi NDVI 2025")
 ````
 
 <img width="4500" height="1500" alt="classi_NDVI_1" src="https://github.com/user-attachments/assets/7a5d9824-cf99-49ef-837f-d5a698359179" />
+
+> Ogni immagine risultante ha tre classi di pixel che dipendono solo dal valore dell'indice in quel pixel, non c'è corrispondenza ecologica tra le classi delle tre immagini.
 
 ## Calibrazione su base ecologica e riclassificazione NDVI
 
@@ -360,11 +369,11 @@ legend("bottomleft",
 ## Confronto tra la classificazione NDVI e la classificazione NDWI
 
 ````r
-par(mfrow=c(2,3))
-plot(class_ndvi_2016, col=colori, main="Classi NDVI 2016", legend = FALSE)
+par(mfrow=c(2,3))                                                           # Suddivisione del pannello grafico in due righe e 3 colonne
+plot(class_ndvi_2016, col=colori, main="Classi NDVI 2016", legend = FALSE)  # La prima riga contiene le classificazioni finali a partire dall'NDVI
 plot(class_ndvi_2021, col=colori, main="Classi NDVI 2021", legend = FALSE)
 plot(class_ndvi_2025, col=colori, main="Classi NDVI 2025", legend = FALSE)
-plot(class_ndwi_2016, col=colori, main="Classi NDWI 2016", legend = FALSE)
+plot(class_ndwi_2016, col=colori, main="Classi NDWI 2016", legend = FALSE)  # La seconda riga contiene le classificazioni finali a partire dall'NDWI
 plot(class_ndwi_2021, col=colori, main="Classi NDWI 2021", legend = FALSE)
 plot(class_ndwi_2025, col=colori, main="Classi NDWI 2025", legend = FALSE)
 ````
@@ -390,7 +399,7 @@ prop2016 = f2016$count / sum(f2016$count)                                     # 
 prop2021 = f2021$count / sum(f2021$count)
 prop2025 = f2025$count / sum(f2025$count)
 
-# Siccome l'immagine dell'area del parco contiene molti pixel senza alcun valore (spazi bianchi intorno), la frequenza relativa non è calcolata rispetto al numero totale di pixel ma al numero totale di pixel che sono associati a una classe 
+# Siccome l'immagine dell'area del parco contiene molti pixel senza alcun valore (NA, spazi bianchi intorno al parco), la frequenza relativa non è calcolata rispetto al numero totale di pixel ma al numero totale di pixel che sono associati a una classe 
 
 perc2016 = prop2016 * 100                                                     # Trasformazione delle frequenze relative in valori percentuali
 perc2021 = prop2021 * 100 
@@ -420,11 +429,11 @@ I dati mostrano che la vegetazione primaria, dopo un lieve aumento tra il 2016 e
 Ora utilizziamo il pacchetto `ggplot` per realizzare dei grafici a barre che rappresentino visivamente le frequenze relative percentuali delle varie classi, successivamente utilizziamo il pacchetto `patchwork` per affiancarli e quindi confrontarli più rapidamente.
 
 ````r
-p1 = ggplot(tabella, aes(x = class, y = percentuale2016, fill = class)) +    # Realizzazione dei grafici
-  geom_bar(stat = "identity") + 
-  ylim(c(0,100)) + 
-  labs(title="2016", x="Classe", y="Percentuale (%)") +
-  scale_fill_manual(values = colori) +
+p1 = ggplot(tabella, aes(x = class, y = percentuale2016, fill = class)) +    # Asse x: nome della classe, asse y = la sua percentuale, colore = colore della classe
+  geom_bar(stat = "identity") +                                              # L'altezza delle barre è presa dal valore y stesso  
+  ylim(c(0,100)) +                                                           # Valori dell'asse y da 0 a 100 
+  labs(title="2016", x="Classe", y="Percentuale (%)") +        
+  scale_fill_manual(values = colori) +                                       # Palette precedentemente decisa per le classi
   theme(legend.position="none")
 
 p2 = ggplot(tabella, aes(x = class, y = percentuale2021, fill = class)) + 
@@ -465,18 +474,18 @@ im.ridgeline(ndwi_stack, scale=1, palette="plasma") + theme_minimal()
 
 # 📝 Conclusioni
 
-L'analisi multitemporale condotta sul Parco Nazionale di Tesso Nilo tra il 2016 e il 2025 conferma un progressivo processo di conversione della foresta primaria, concentrato in particolare nel settore occidentale del parco, a vantaggio soprattutto della vegetazione secondaria riconducibile alla palma da olio e, in misura minore, di suoli nudi e infrastrutture. La classificazione ecologica calibrata mostra che la foresta primaria è passata dal 42.71% del 2016 al 35.24% del 2025, mentre la vegetazione secondaria è cresciuta dal 37.81% al 48.04% nello stesso periodo.
+L'analisi multitemporale condotta sul Parco Nazionale di Tesso Nilo tra il 2016 e il 2025 conferma un progressivo processo di conversione della foresta primaria, concentrato in particolare nel settore orientale del parco, a vantaggio soprattutto della vegetazione secondaria riconducibile alla palma da olio e, in misura minore, di suoli nudi e infrastrutture. La classificazione ecologica calibrata mostra che la foresta primaria è passata dal 42.71% del 2016 al 35.24% del 2025, mentre la vegetazione secondaria è cresciuta dal 37.81% al 48.04% nello stesso periodo.
 Allo stesso modo il confronto tra le classi del 2016 e del 2021, anche essendo visivamente chiaro, a livello quantitativo mostra differenze piccole ma opposte a quelle che ci si aspetterebbe. Per esempio sembrerebbe indicare un leggero aumento della foresta primaria, invece di una diminuzione (come è effettivamente avvenuto, Susanto et al., 2026), questo potrebbe essere implicabile a due fattori: 
-+ *L'utilizzo del Satellite Landsat8 per l'anno 2016* - questo satellite ha una risoluzione di 30 m per tutte le bande mentre Landsat2 ha una risoluzione di 10 m per il NIR e 20 per lo SWIR1. Quindi il satellite Sentinel2 potrebbe essere stato più efficacie nel distinguere le parti forestali più frammentate nel settore ovest del parco.
++ *L'utilizzo del Satellite Landsat8 per l'anno 2016* - questo satellite ha una risoluzione di 30 m per tutte le bande mentre Sentinel2 ha una risoluzione di 10 m per il NIR e 20 per lo SWIR1. Quindi il satellite Sentinel2 potrebbe essere stato più efficacie nel distinguere le parti forestali più frammentate nel settore ovest del parco.
 + *La variabilità climatica* - Nel 2015 e nel 2016 si è osservato uno dei più forti eventi di El Niño registrato nella storia recente, invece il 2021 era un anno con clima soggetto agli eventi de La Niña (International Research Institute for Climate and Society, 2026). Questo per l'Indonesia vuol dire che il 2016 è stato un anno particolarmente secco con poche precipitazioni (meno umidità e acqua nelle chiome) mentre il 2021 è stato un anno più umido con più precipitazioni (più umidità e acqua nelle chiome), le mie classificazioni sono realizzate a partire dal NDWI che è particolarmente sensibile proprio al fattore umidità e contenuto d'acqua nella vegetazione.
 In questo modo il progetto mostra l'importanza di usare in modo integrato diversi indici per avere una visione più completa possibile di ciò che si sta monitorando. Il solo NDVI si è rivelato per esempio uno strumento parzialmente limitato nel distinguere con nettezza le tre classi di copertura, motivo per cui l'analisi è stata affiancata dal calcolo dell'NDWI di Gao, più sensibile al contenuto idrico e quindi capace di discriminare meglio la foresta primaria (più chiusa e umida) dalla vegetazione secondaria, e dall'Urban Index, utile per isolare più chiaramente l'espansione dei suoli nudi e delle infrastrutture ai margini della foresta.
-In conclusione questo studio identifica un trend coerente a quello riportato in letteratura, evidenziando un'importante riduzione della copertura forestale nel Parco Nazionale del Tesso Nilo a favore dell'espansione illegale delle colture di palme da olio, questo corrisponde a una grave perdita di habitat per specie endemiche già a rischio di estinzione. Si delinea quindi come necessario il monitoraggio satellitare continuo per tutelare quest'area di cruciale importanza per la biodiversità
+In conclusione questo studio identifica un trend coerente a quello riportato in letteratura, evidenziando un'importante riduzione della copertura forestale nel Parco Nazionale del Tesso Nilo a favore dell'espansione (in gran parte illegale) delle colture di palme da olio, questo corrisponde a una grave perdita di habitat per specie endemiche già a rischio di estinzione. Si delinea quindi come necessario il monitoraggio satellitare continuo per tutelare quest'area di cruciale importanza per la biodiversità
 
 # 🌐 Sitografia e bibliografia
 
 ### Contesto ecologico e conservazionistico
 - Pramudita, S. A. E., Mamesah, T. P. C. (2025). *The Impact of Deforestation on Protected Animal Populations in Sumatra: Analysis of Global Forest Watch and IUCN Red List Data*. Vivaterra: Journal of Nature, Plants and Animals Studies, 1(1), 27-35.
-- Susanto, D., Atmojo, J.T., Nugroho, P. et al. (2026). *Unraveling the vulnerability o0f protected areas to oil palm expansion: The case from Tesso Nilo National Park, Sumatra, Indonesia*. Environmental Management 76, 8.
+- Susanto, D., Atmojo, J.T., Nugroho, P. et al. (2026). *Unraveling the vulnerability of protected areas to oil palm expansion: The case from Tesso Nilo National Park, Sumatra, Indonesia*. Environmental Management 76, 8.
 - Gao B. (1996). *NDWI—A normalized difference water index for remote sensing of vegetation liquid water from space*
 - International Research Institute for Climate and Society. (2026). *ENSO Climate Forecasts*. Columbia Climate School, Columbia University. https://iri.columbia.edu/our-expertise/climate/forecasts/enso/current/ [consultato il 14 luglio 2026]
 
