@@ -42,7 +42,7 @@ var colPre = ee.ImageCollection('LANDSAT/LC08/C02/T1_L2')         // Prende le i
                .filterDate('2016-05-01', '2016-10-31')            // Selezionando quelle in questo intervallo di tempo
                .filter(ee.Filter.lt('CLOUD_COVER', 30))           // Selezionando le immagini che hanno meno del 30% di copertura
                .map(prepareLandsat8);                             // Applica la funzione di filtro a tutte le immagini rimaste
-var compositePre = colPre.median().clip(Sumatra_Test);
+var compositePre = colPre.median().clip(Sumatra_Test);            // Per ogni pixel calcola il valore mediano fra tutte le immagini rimaste
 
 // 2. 2021 - Sentinel2 
 var colDurante = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
