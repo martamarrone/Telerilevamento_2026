@@ -19,13 +19,11 @@ Il progetto parte dal desiderio di indagare un esempio di uno dei maggiori fatto
 > Area di studio: Parco Nazionale di Tasso Nilo, Riau, Sumatra.
 > Immagine realizzata tramite il software QGIS
 
-
-L'obiettivo del progetto è quindi di analizzare e rendere evidente, attraverso il telerilevamento, l'aumento del suolo nudo e della vegetazione secondaria (habitat degradati e soprattutto coltivaziono di palama da olio) a scapito della riduzione della foresta primaria del parco. In questo studio sono stati presi in esame gli anni più recenti della trasformazione:
+L'obiettivo del progetto è quindi di analizzare e rendere evidente, attraverso il telerilevamento, l'aumento del suolo nudo e della vegetazione secondaria (habitat degradati e soprattutto coltivazion di palma da olio) a scapito della riduzione della foresta primaria del parco. In questo studio sono stati presi in esame gli anni più recenti della trasformazione:
 
 - **2016** (Utilizzato come baseline): situazione del parco prima dell'intensificarsi delle pressioni antropiche più recenti.
-- **2021** (Fase intermedia): avanzamento della deforestazione con l'aumento di suolo nudo.
+- **2021** (Fase intermedia): grande avanzamento della deforestazione con l'aumento di suolo nudo.
 - **2025** (Situazione attuale): larga espansione e stabilizzazione delle colture di palme da olio.
-
 
 # Materiali e metodi
 
