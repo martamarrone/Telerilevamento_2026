@@ -382,7 +382,7 @@ plot(class_ndwi_2025, col=colori, main="Classi NDWI 2025", legend = FALSE)
 >
 > Realizzando la divisione in classi con l'NDVI risulta evidente ciò che s'ipotiazzava già con la sola visualizzazione degli indici, ovvero: l'NDVI non riesce a discriminare bene questi due tipi di vegetazione e, nuovamente, la foresta nel 2025 sembrerebbe espandersi.
 >
-> Invece, la classificazione fatta a partire dall'NDWI ci mostra come nel 2021, anno di intensa deforestazione, aumenti la quantità di suolo nudo all'interno del parco. Mentre nel 2025 ad aumentare notevolmente è la quantità di vegetazione secondaria fenomeno che, grazie alla letteratura scientifica, sappiamo essere riconducibile all'espansione e stabilizzazioni delle colture illegali di palme da olio.
+> Invece, la classificazione fatta a partire dall'NDWI ci mostra come nel 2021, anno di intensa deforestazione, aumenti la quantità di suolo nudo intorno alla foresta. Mentre nel 2025 ad aumentare notevolmente è la quantità di vegetazione secondaria fenomeno che, grazie alla letteratura scientifica, sappiamo essere riconducibile all'espansione e stabilizzazione delle colture di palme da olio.
 >
 > Per questi motivi, per le prossime analisi, utilizzerò l'NDWI invece dell'NDVI, in modo da ottenere risultati più rappresentativi.
 
