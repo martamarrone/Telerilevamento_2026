@@ -262,7 +262,7 @@ plot(ui_2025, col=inferno(100), main="UI 2025")
 
 > A differenza degli indici precedenti l'UI ha valori più alti in corrispondenza di suoli nudi e infrastrutture.
 >
-> Generalmente usato per rendere evidente l'ampliazione di una zona urbana, in realtà i valori di riflettanza della banda SWIR2 per infrastrutture urbane e suoli nudi sono molto simili. Questo lo rende particolarmente utile per evidenziare l'espansione di questi due elementi a scapito della foresta, possiamo notare infatti che si ristringono intorno ad essa anno dopo anno.
+> Generalmente usato per rendere evidente l'espanzione di una zona urbana, in realtà i valori di riflettanza della banda SWIR2 per infrastrutture urbane e suoli nudi sono molto simili. Questo lo rende particolarmente utile per evidenziare l'espansione di questi due elementi a scapito della foresta, possiamo notare infatti che si ristringono intorno ad essa anno dopo anno.
 >
 > Quindi l'NDWI e l'UI ci danno informazioni complementari, il primo si concentra sulla vegetazione della foresta primaria mentre il secondo sugli impatti antropici che la minacciano e danneggiano.
 
