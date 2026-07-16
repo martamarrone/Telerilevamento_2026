@@ -427,7 +427,7 @@ I dati mostrano che la vegetazione primaria, dopo un lieve aumento tra il 2016 e
 
 ## Grafici a barre di confronto
 
-Ora utilizziamo il pacchetto `ggplot` per realizzare dei grafici a barre che rappresentino visivamente le frequenze relative percentuali delle varie classi, successivamente utilizziamo il pacchetto `patchwork` per affiancarli e quindi confrontarli più rapidamente.
+Ora utilizziamo il pacchetto `ggplot2` per realizzare dei grafici a barre che rappresentino visivamente le frequenze relative percentuali delle varie classi, successivamente utilizziamo il pacchetto `patchwork` per affiancarli e quindi confrontarli più rapidamente.
 
 ````r
 p1 = ggplot(tabella, aes(x = class, y = percentuale2016, fill = class)) +    # Asse x: nome della classe, asse y = la sua percentuale, colore = colore della classe
