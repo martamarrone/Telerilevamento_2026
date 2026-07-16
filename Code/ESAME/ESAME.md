@@ -57,9 +57,10 @@ Le sei bande esportate per ciascun anno sono: **B2 (Blu), B3 (Verde), B4 (Rosso)
 
 ````r
 library(terra)        # Lavorazione raster e immagini satellitari
-library(imageRy)      # Velocizzazione di calcoli e visualizzazioni
+library(imageRy)      # Velocizzazione di analisi, calcoli e visualizzazioni
 library(viridis)      # Palette di colori
-library(ggplot2)      # Creazione di grafici a barre 
+library(ggplot2)      # Creazione di grafici a barre
+library(ggrifges)     # Creazione del ridgeline plot  
 library(patchwork)    # Visualizzazione rapida del confronto tra i grafici a barre
 ````
 
@@ -103,7 +104,6 @@ par(mfrow=c(1,3))                                         # Divisione pannello g
 plotRGB(tn_2016, 3, 2, 1, stretch="lin", main = "2016")   # Rappresentazione immagini colori naturali 
 plotRGB(tn_2021, 3, 2, 1, stretch="lin", main = "2021")   # r = 3 = B4, g = 2 = B3, b = 1 = B2
 plotRGB(tn_2025, 3, 2, 1, stretch="lin", main = "2025")
-de.off()                                                  # chiusura pannello grafico
 ````
 
 <img width="4500" height="1500" alt="tn_tc" src="https://github.com/user-attachments/assets/ff4357b4-4b59-4fd2-a2e0-39001c33875e" />
@@ -117,7 +117,6 @@ par(mfrow=c(1,3))
 plotRGB(tn_2016, 4, 3, 2, stretch="lin", main = "2016")   # Rappresentazione immagini in falsi colori
 plotRGB(tn_2021, 4, 3, 2, stretch="lin", main = "2021")   # 4 = B8, 3 = B4, 2 = B3 
 plotRGB(tn_2025, 4, 3, 2, stretch="lin", main = "2025")
-dev.off()
 ````
 
 <img width="4500" height="1500" alt="tn_fc" src="https://github.com/user-attachments/assets/ff84fb2b-c3e8-4d4d-a6af-c4d963dde85d" />
