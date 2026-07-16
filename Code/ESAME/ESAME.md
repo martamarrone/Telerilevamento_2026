@@ -57,11 +57,10 @@ Le sei bande esportate per ciascun anno sono: **B2 (Blu), B3 (Verde), B4 (Rosso)
 
 ````r
 library(terra)        # Lavorazione raster e immagini satellitari
-library(imageRy)      # Calcolo veloce di indici e funzioni di classificazione
+library(imageRy)      # Velocizzazione di calcoli e visualizzazioni
 library(viridis)      # Palette di colori
 library(ggplot2)      # Creazione di grafici a barre 
 library(patchwork)    # Visualizzazione rapida del confronto tra i grafici a barre
-library(ggridges)     # Creazione del ridgeline plot
 ````
 
 # Importazione e visualizzazione delle immagini
@@ -464,7 +463,7 @@ Per confrontare in un unico grafico la distribuzione continua dei valori di NDWI
 ndwi_stack = c(ndwi_2016, ndwi_2021, ndwi_2025)
 names(ndwi_stack) = c("NDWI 2016", "NDWI 2021", "NDWI 2025")
 
-im.ridgeline(ndwi_stack, scale=1, palette="plasma") + theme_minimal()
+im.ridgeline(ndwi_stack, scale=1, palette="plasma") + theme_minimal()   # La funzione si appoggia al pacchetto ggridges 
 ````
 
 <img width="1800" height="1200" alt="ridgeline_plot" src="https://github.com/user-attachments/assets/35b52c65-62de-4d19-ab55-5d16e434b89b" />
