@@ -41,7 +41,7 @@ Le sei bande esportate per ciascun anno sono: **B2 (Blu), B3 (Verde), B4 (Rosso)
 
 | Sensore | Anno | Risoluzione spaziale (bande usate) |
 | :---: | :---: | :--- |
-| **Landsat 8** | 2016 | 30 m (ricampionata/rinominata per coincidere con S2) |
+| **Landsat 8** | 2016 | 30 m |
 | **Sentinel-2** | 2021, 2025 | 10-20 m |
 
 | Banda | Nome comune | Su R |
