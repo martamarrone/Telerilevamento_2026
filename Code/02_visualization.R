@@ -9,7 +9,7 @@ install.packages("patchwork")
 library(terra)
 library(imageRy)
 library(viridis)
-library(ggplot2)
+library(ggplot2) #pacchetto tydivers (sinassi con +)
 library(patchwork)
 
 im.list()
@@ -21,6 +21,7 @@ b2 = im.import("sentinel.dolomites.b2.tif")
 #cambiare colori della foto che abbiamo importato 
 
 cl = colorRampPalette(c("lightsalmon", "magenta", "mediumpurple1"))(100)
+#R base
 #100 sono le sfumature, si possono specificare fuori
 #mettiamo c per creare un vettore
 plot(b2, col=cl)
