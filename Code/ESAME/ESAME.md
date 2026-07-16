@@ -30,7 +30,7 @@ L'obiettivo del progetto è quindi di analizzare e rendere evidente, attraverso 
 Le immagini sono state acquisite tramite il portale [Google Earth Engine](https://earthengine.google.com/), ritagliando l'area sui confini ufficiali del Parco Nazionale di Tesso Nilo (dataset `WCMC/WDPA/current/polygons`). Per ciascun anno le immagini sono state filtrate sulla stagione secca (maggio-ottobre), in modo da minimizzare la copertura nuvolosa e gli effetti fenologici stagionali, e sono state selezionate come mediana della collezione filtrata.
 
 - **2016**: composito Landsat 8 (Collection 2, Level 2), con maschera delle nuvole tramite banda QA_PIXEL e applicazione dei fattori di scala ufficiali USGS. Le bande sono state rinominate (SR_B2→B2, SR_B3→B3, SR_B4→B4, SR_B5→B8, SR_B6→B11, SR_B7→B12) per renderle direttamente confrontabili con quelle di Sentinel-2.
-- **2021** e **2025**: composito Sentinel-2 SR Harmonized, con maschera delle nuvole tramite banda SCL.
+- **2021** e **2025**: composito Sentinel-2, con maschera delle nuvole tramite banda SCL.
 
 Le sei bande esportate per ciascun anno sono: **B2 (Blu), B3 (Verde), B4 (Rosso), B8 (NIR), B11 (SWIR1), B12 (SWIR2)**.
 
@@ -46,12 +46,12 @@ Le sei bande esportate per ciascun anno sono: **B2 (Blu), B3 (Verde), B4 (Rosso)
 
 | Banda | Nome comune | Su R |
 | :---: | :---: | :--- |
-| **B2** | Blu | [[1]] |
-| **B3** | Verde | [[2]] |
-| **B4** | Rosso | [[3]] |
-| **B8** | Vicino Infrarosso (NIR) | [[4]] |
-| **B11** | SWIR 1 | [[5]] |
-| **B12** | SWIR 2 | [[6]] |
+| **B2** | Blu | 1 |
+| **B3** | Verde | 2 |
+| **B4** | Rosso | 3 |
+| **B8** | NIR | 4 |
+| **B11** | SWIR 1 | 5 |
+| **B12** | SWIR 2 | 6 |
 
 ### Pacchetti utilizzati in R
 
@@ -163,7 +163,7 @@ plot(ddvi_16_25, col=turbo(100), main="Diff DVI 2016 - 2025 (Prima - Dopo)")
 
 ## NDVI (Normalized Difference Vegetation Index)
 
-$NDVI = \frac{NIR - RED}{NIR + RED}$
+$` NDVI = \frac{NIR - RED}{NIR + RED} `$
 
 ````r
 ndvi_2016 = im.ndvi(tn_2016, 4, 3)
